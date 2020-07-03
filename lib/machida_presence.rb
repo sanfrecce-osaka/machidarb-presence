@@ -6,7 +6,11 @@ end
 class Object
   def blank?
     if respond_to?(:empty?)
-      empty? || nil?
+      if is_a? String
+        self =~ /^\s+/ ? true : empty?
+      else
+        empty? || nil?
+      end
     else
       nil?
     end

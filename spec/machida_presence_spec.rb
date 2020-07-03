@@ -23,6 +23,12 @@ RSpec.describe MachidaPresence do
         expect('あ'.blank?).to be false
       end
     end
+
+    context 'スペースのみのとき' do
+      it 'trueであること' do
+        expect(' 　'.blank?).to be true
+      end
+    end
   end
 
   describe 'Integer#blank?' do
@@ -79,6 +85,12 @@ RSpec.describe MachidaPresence do
         expect('あ'.present?).to be true
       end
     end
+
+    context 'スペースのみのとき' do
+      it 'falseであること' do
+        expect(' 　'.present?).to be false
+      end
+    end
   end
 
   describe 'Integer#present?' do
@@ -133,6 +145,12 @@ RSpec.describe MachidaPresence do
     context '空文字でないとき' do
       it '自身を返すこと' do
         expect('あ'.presence).to eq 'あ'
+      end
+    end
+
+    context 'スペースのみのとき' do
+      it 'nilであること' do
+        expect(' 　'.presence).to be nil
       end
     end
   end
